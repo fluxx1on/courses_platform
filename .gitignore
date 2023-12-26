@@ -1,0 +1,7 @@
+venv
+*.pyc
+db.sqlite3
+school_api/migrations
+py_log.log
+*.log
+node_modules

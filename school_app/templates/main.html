@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="{% static 'css/main.min.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <div class="flex fixed top_menu">
+        <a href="{% url 'lk' %}"><div class="flex login font_bold">Login</div></a>
+    </div>
+    <div class="main flex btw ">
+        {% for course in courses %}
+            <a href="" class="course_card flex column">
+                <div class="course_card_name flex font_bold">
+                    {{ course.name }}
+                </div>
+                <div class="course_card_inner_container flex">
+                    <div class="course_card_description">
+                        <div class="flex name font_bold">
+                            {{ course.teachers.all.get.name }}
+                        </div>
+                        <div class="flex text font_refular">
+                            {{ course.description }}
+                        </div>
+                    </div>
+                </div>
+                <div class="semicontainer3 flex">
+                    <div class="field font_bold">{{ course.duration }}</div>
+                    <div class="field font_bold">{{ course.date_open }}</div>
+                    <div class="field font_bold">{{ course.repeat }}</div>
+                    <div class="field font_bold">
+                        {% if course.is_active == 1 %}
+                            активный
+                        {% else %}
+                            неактивный
+                        {% endif %}
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+        </div>
+</body>
+<script type="text/javascript" src="{% static 'js/index.js' %}" ></script>
+</html>
